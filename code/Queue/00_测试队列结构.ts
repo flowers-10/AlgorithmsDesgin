@@ -12,4 +12,4 @@ console.log(queue.peek());
 
 console.log(queue.isEmpty());
 
-console.log(queue.size());
+console.log(queue.size);

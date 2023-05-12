@@ -15,7 +15,7 @@ class ArrayQueue<T> implements IQueue<T> {
   isEmpty(): boolean {
     return this.data.length === 0;
   }
-  size(): number {
+  get size(): number {
     return this.data.length;
   }
 }
