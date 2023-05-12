@@ -28,7 +28,7 @@ class ArrayStack<T = any> implements IStack<T> {
   }
 
   // 返回栈的数据个数
-  size(): number {
+  get size(): number {
     return this.data.length;
   }
 }

@@ -16,7 +16,7 @@ function isValid(s: string):boolean {
     }
   }
 
-  return stack.size() === 0
+  return stack.size === 0
 };
 
 console.log(isValid("()"));
