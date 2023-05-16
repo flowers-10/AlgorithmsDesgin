@@ -73,16 +73,30 @@ class LinkedList<T> {
 
     return true;
   }
+
+  get(position: number): T | null {
+    if (position < 0 || position >= this.size) return null;
+    let current = this.head;
+    let index = 0;
+    while (index++ < position && current) {
+      current = current.next;
+    }
+    return current?.value ?? null;
+  }
 }
 
 const linkedList = new LinkedList<string>();
 
 linkedList.append("aaa");
 linkedList.append("bbb");
-linkedList.insert("333",2);
+linkedList.insert("333", 2);
 linkedList.append("ccc");
 linkedList.append("ddd");
-linkedList.insert("666",5);
+linkedList.insert("666", 5);
 linkedList.traverse();
+console.log(linkedList.get(0));
+console.log(linkedList.get(1));
+console.log(linkedList.get(2));
+
 
 export {};
