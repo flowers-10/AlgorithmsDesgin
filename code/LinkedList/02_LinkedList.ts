@@ -74,6 +74,27 @@ class LinkedList<T> {
     return true;
   }
 
+  //链表插入元素的方法
+  removeAt(position: number): T | null {
+    // 1.越界判断
+    if (position < 0 || position >= this.size)  return null
+    let current = this.head
+    if (position === 0) {
+      this.head = current?.next ?? null;
+    } else {
+      let index = 0;
+      let previous: Node<T> | null = null;
+      while (index++ < position && current) {
+        previous = current;
+        current = current.next;
+      }
+      previous!.next = current?.next ?? null;
+    }
+    this.size--;
+
+    return current?.value ?? null;
+  }
+
   get(position: number): T | null {
     if (position < 0 || position >= this.size) return null;
     let current = this.head;
@@ -93,10 +114,15 @@ linkedList.insert("333", 2);
 linkedList.append("ccc");
 linkedList.append("ddd");
 linkedList.insert("666", 5);
+
 linkedList.traverse();
-console.log(linkedList.get(0));
-console.log(linkedList.get(1));
-console.log(linkedList.get(2));
+linkedList.removeAt(2)
+linkedList.removeAt(2)
+linkedList.traverse();
+
+// console.log(linkedList.get(0));
+// console.log(linkedList.get(1));
+// console.log(linkedList.get(2));
 
 
 export {};
