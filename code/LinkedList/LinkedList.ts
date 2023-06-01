@@ -15,6 +15,18 @@ class LinkedList<T> {
   get length() {
     return this.size;
   }
+  // 封装私有方法
+  // 根绝positon获取当前的节点（不是节点的value，而是获取节点)
+  private getNode(position:number) : Node<T> | null {
+    let index = 0
+    let current = this.head
+    while (index ++ < position && current) {
+      current = current.next
+    }
+    return current
+  }
+
+
   // 追加节点
   append(value: T) {
     // 1.根据value新建一个Node节点
@@ -59,14 +71,9 @@ class LinkedList<T> {
       newNode.next = this.head;
       this.head = newNode;
     } else {
-      let current = this.head;
-      let index = 0;
-      let previous: Node<T> | null = null;
-      while (index++ < position && current) {
-        previous = current;
-        current = current.next;
-      }
-      newNode.next = current;
+      const previous = this.getNode(position - 1)
+      
+      newNode.next = previous!.next;
       previous!.next = newNode;
     }
     this.size++;
@@ -78,17 +85,13 @@ class LinkedList<T> {
   removeAt(position: number): T | null {
     // 1.越界判断
     if (position < 0 || position >= this.size)  return null
+
     let current = this.head
     if (position === 0) {
       this.head = current?.next ?? null;
     } else {
-      let index = 0;
-      let previous: Node<T> | null = null;
-      while (index++ < position && current) {
-        previous = current;
-        current = current.next;
-      }
-      previous!.next = current?.next ?? null;
+      const previous = this.getNode(position - 1)
+      previous!.next = previous?.next?.next ?? null;
     }
     this.size--;
 
@@ -97,12 +100,8 @@ class LinkedList<T> {
 
   get(position: number): T | null {
     if (position < 0 || position >= this.size) return null;
-    let current = this.head;
-    let index = 0;
-    while (index++ < position && current) {
-      current = current.next;
-    }
-    return current?.value ?? null;
+   
+    return this.getNode(position)?.value ?? null
   }
 }
 
