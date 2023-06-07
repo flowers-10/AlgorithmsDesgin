@@ -1,4 +1,4 @@
-import ArrayQueue from "./01_Queue";
+import ArrayQueue from "../Queue";
 
 function hotPotato(gamers: string[], num: number): number {
   if (gamers.length === 0) return -1;

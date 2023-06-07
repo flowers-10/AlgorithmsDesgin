@@ -1,4 +1,4 @@
-import ArrayQueue from "./01_Queue";
+import ArrayQueue from "../Queue";
 
 function lastRemaining(n: number, m: number): number {
   const queue = new ArrayQueue<number>();

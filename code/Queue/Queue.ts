@@ -1,4 +1,4 @@
-import IQueue from "./IQueue";
+import IQueue from "./BasisIQueue";
 
 class ArrayQueue<T> implements IQueue<T> {
   // 内部通过数组保存
