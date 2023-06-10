@@ -1,0 +1,462 @@
+# 思维导图
+学习路线
+![](https://cdn.nlark.com/yuque/0/2023/jpeg/35159616/1683209544355-94570b6c-9427-4e42-b470-463a43e5c3eb.jpeg)
+
+# 数据结构
+## 线性结构
+
+- **线性结构（Linear List）是由n（n>=0）个数据元素（结点）a[0]，a[1]，a[2]...，a[n-1]组成的有序序列。**
+- **其中：**
+
+数据元素的个数n定义为表的长度  = list.length() 
+> list.length=0 表示没有一个元素时称为空表
+
+将非空的线性表（a>=1）记作：（a[0]，a[1]，a[2]...，a[n-1]）
+数据元素a[i] (0<= i <= n-1)只是个抽象符号，其具体含义在不同情况下可以不同
+
+![image.png](https://cdn.nlark.com/yuque/0/2023/png/35159616/1683210272281-d4f08fb1-7ebb-46d0-9a05-178d576bce74.png#averageHue=%23c7cbce&clientId=uc5c9ecb2-3046-4&from=paste&height=143&id=u92ef2daf&originHeight=143&originWidth=783&originalType=binary&ratio=1&rotation=0&showTitle=false&size=44368&status=done&style=none&taskId=ue75723aa-ce52-4dd8-aa8c-985f73e8c3d&title=&width=783)
+
+### 数组(Array)结构
+**数组(Array)结构是一种重要的数据结构：**
+
+- 几乎每种编程语言都会提供一种`原生数据结构`（自带的）；
+- 并且我们`可以借住数据结构来实现其他的数据结构`，比如栈（Stack）、队列（Queue）、堆（Heap）；
+
+**通常数组的内存是连续的，所以数组在知道下标值的情况下，访问小绿是非常高的**
+![image.png](https://cdn.nlark.com/yuque/0/2023/png/35159616/1683210540074-08f7d491-ab20-4015-ba1e-7795c2a7c593.png#averageHue=%23e4dbd1&clientId=uc5c9ecb2-3046-4&from=paste&height=254&id=ue693f993&originHeight=254&originWidth=671&originalType=binary&ratio=1&rotation=0&showTitle=false&size=55340&status=done&style=none&taskId=u374e6bb3-488d-4c6a-8135-092315ca9ef&title=&width=671)
+### 栈结构（Stack）
+#### 认识栈结构和特性
+数组是一种线性结构，并且可以在数组的任意位置插入和删除数据。
+但是有时候我们为了实现某些功能，必须对这种任意性加以限制。
+而栈和队列就是比较常见的受限的线性结构。
+#### 栈结构示意图
+![image.png](https://cdn.nlark.com/yuque/0/2023/png/35159616/1683210911412-be31d890-9ed3-446c-b90b-70012d2428c3.png#averageHue=%23e7e3d9&clientId=uc5c9ecb2-3046-4&from=paste&height=290&id=u822b2fc5&originHeight=290&originWidth=742&originalType=binary&ratio=1&rotation=0&showTitle=false&size=59328&status=done&style=none&taskId=uea75ab66-726d-486b-b56a-c0fbfd8d836&title=&width=742)
+
+栈它是一种受限的线性结构，先进后出（LIFO）
+
+- 其限制是仅允许在表的一端进行插入和删除运算。这一端被称为栈顶，相对的，把另一端称为栈底。
+- LIFO（last in first out）表示就是后进入的元素，第一个弹出栈空间。
+- 像一个栈插入新元素又称为进栈、入栈或压栈。它是把新的元素放到栈顶元素的上门，使之成为新的栈顶元素。
+- 从一个栈删除元素又称作出栈或者退栈，它是把栈顶元素删除，使其相邻的元素成为新的栈顶元素。
+#### 面试题目
+![image.png](https://cdn.nlark.com/yuque/0/2023/png/35159616/1683211390186-0466fe3a-3bfb-4854-ba50-2b0a40b35fd6.png#averageHue=%23e7e6e6&clientId=uc5c9ecb2-3046-4&from=paste&height=91&id=u7e6a883a&originHeight=91&originWidth=437&originalType=binary&ratio=1&rotation=0&showTitle=false&size=28121&status=done&style=none&taskId=u52bbb934-f84f-45ae-97d3-005bef5725a&title=&width=437)
+![image.png](https://cdn.nlark.com/yuque/0/2023/png/35159616/1683211398067-f6a4a7d1-c433-4e3d-9fd5-8e0b61dbea92.png#averageHue=%23dfdfdf&clientId=uc5c9ecb2-3046-4&from=paste&height=142&id=u381d3c66&originHeight=142&originWidth=666&originalType=binary&ratio=1&rotation=0&showTitle=false&size=60356&status=done&style=none&taskId=uc3bcb036-fe8b-4b58-93ea-e745fec94aa&title=&width=666)
+#### 栈结构实现
+**实现栈结构：**
+
+- 基于数组实现
+- 基于链表实现
+#### 创建栈结构的类
+**创建一个栈的类**
+```typescript
+// 封装Stack
+class ArrayStack {
+  // 定义一个数组，用于存储元素
+  private data:any[] = []
+
+  // 实现栈操作方法
+  push() {
+
+  }
+}
+```
+**代码解析:**
+
+- 我们创建了一个Stack，用户创建栈的类，可以定义一个泛型类。
+- 在构造函数中，定义了一个变量，这个变量可以用于保存当前栈对象中所有的元素。
+- 这个变量是一个数组类型。
+- 我们之后无论是压栈操作还是出栈操作，都是从数组中添加和删除元素。
+- 栈有一些相关的操作方法，通常无论是什么语言，操作都是比较类似的。
+
+**栈常见有哪些操作呢?**
+
+- push(element):添加一个新元素到栈顶位置。
+- pop()∶移除栈顶的元素，同时返回被移除的元素。
+- peek():返回栈顶的元素，不对栈做任何修改(这个方法不会移除栈顶的元素，仅仅返回它)。
+- isEmpty():如果栈里没有任何元素就返回true，否则返回false。
+- size():返回栈里的元素个数。这个方法和数组的length属性很类似。
+
+#### 源码
+```typescript
+import IStack from "./IStack";
+
+// 封装Stack
+class ArrayStack<T = any> implements IStack<T> {
+  // 定义一个数组，用于存储元素
+  private data: T[] = [];
+
+  // 实现栈操作方法
+
+  // 元素压入栈
+  push(element: T): void {
+    this.data.push(element);
+  }
+
+  // 将栈顶元素弹出栈
+  pop(): T | undefined {
+    return this.data.pop();
+  }
+
+  // 查看栈顶元素
+  peek(): T | undefined {
+    return this.data[this.data.length - 1];
+  }
+
+  // 判断栈是否为空
+  isEmpty(): boolean {
+    return this.data.length === 0;
+  }
+
+  // 返回栈的数据个数
+  get size(): number {
+    return this.data.length;
+  }
+}
+
+export default ArrayStack;
+
+```
+### 队列结构（Queue)
+#### 认识队列以及特性
+**受限的线性结构：**
+
+- 我们已经学习了一种受限的线性结构：栈结构
+- 这种受限结构对于解决某些特定问题，有特别效果
+- 我们接下来学习另一个受限结构：队列
+
+**队列（Queue）它是一种受限的线性表，先进先出（FIFO First In First Out）**
+
+- 在于它只允许在队列的前端（front）进行删除操作
+- 而在队列的后端（rear）进行插入操作
+
+![image.png](https://cdn.nlark.com/yuque/0/2023/png/35159616/1683798516540-8eadd862-8994-4159-8c8e-6570d4e76b55.png#averageHue=%23fefefe&clientId=ub1970247-d883-4&from=paste&height=142&id=u7db5f77c&originHeight=284&originWidth=1186&originalType=binary&ratio=2&rotation=0&showTitle=false&size=71357&status=done&style=none&taskId=uc9c381b7-ba0e-4a5a-b25e-f0b6f5cffca&title=&width=593)
+**线程队列：**
+
+- 在开发中，为了让任务可以并行处理，通常会开启多线程;
+- 但是我们不能让大量的线程同时处理任务（占用资源）;
+- 如果需要开启线程处理任务，我们就会使用线程队列;
+- 线程队列会依照次序来启动线程，并且处理对应的任务;
+
+**队列还有很多其他应用，后续很多算法中也会用到队列（比如二叉树的层序遍历）**
+#### 实现队列结构封装
+**队列的实现和栈一样，有两种方案：**
+
+- 基于数组实现
+- 基于链表实现
+
+**创建一个类实现队列**
+
+#### 队列结构常见方法
+**常见操作：**
+
+- enqueue(element):向尾部添加一个（或多个）新的项。
+- dequeue():移除队列的第一（即排在队列最前面的）项，并返回被移除的元素。
+- front/peek():返回一队列中的第一个元素----最先被添加的，也就是最先被移除的元素。队列不做任何变动（不移除元素，只返回元素信息---与Stack类的peek方法非常相似）。
+- isEmpty():如果队列中不包含任何元素，返回true，否则返回false。
+- size():返回队列包含的元素个数，与数组的length属性类似。
+
+#### 源码
+```typescript
+import IQueue from "./IQueue";
+
+class ArrayQueue<T> implements IQueue<T> {
+  // 内部通过数组保存
+  private data: T[] = [];
+  enqueue(element: T): void {
+    this.data.push(element);
+  }
+  dequeue(): T | undefined {
+    return this.data.shift();
+  }
+  peek(): T | undefined {
+    return this.data[0];
+  }
+  isEmpty(): boolean {
+    return this.data.length === 0;
+  }
+  get size(): number {
+    return this.data.length;
+  }
+}
+
+export default ArrayQueue;
+
+```
+#### 面试题
+###### 击鼓传花
+使用队列可以非常方便的实现最终结果
+**原游戏规则：**
+
+- 所有人围成一个圈，从末尾同学手里开始向旁边的同学传花。
+- 这个时候当鼓声停止，花落谁家，谁就中大奖。
+
+**修改后的规则：**
+
+- 所有人一圈开始数数，数到某个数字时自动淘汰
+- 最后剩下的这个人会获取胜利，请问最后剩下的时原来在哪一个位置上的人？
+
+**封装一个基于队列的函数：**
+
+- 参数：所有人参与的姓名，基于数字
+- 结果：最终剩下一个人的名字
+
+###### 约瑟夫环：
+
+- 阿桥问题（有时也称为约瑟夫斯置换)，是一个出现在计算机科学和数学中的问题。在计算机编程的算法中，类似问题又称为约瑟夫环。
+- 人们站在一个等待被处决的圈子里。
+- 计数从圆圈中的指定点开始，并沿指定方向围绕圆圈进行。在跳过指定数量的人之后，处刑下一个人。
+- 对剩下的人重复该过程，从下一个人开始，朝同一方向跳过相同数量的人，直到只剩下一个人，并被释放。
+- 在给定数量的情况下，站在第几个位置可以避免被处决?
+
+### 链表结构（LinkedList）
+#### 认识链表以及特性
+##### 链表以及数组的缺点
+
+- **链表和数组一样，可以用于存储一系列的元素，但是链表和数组的实现机制完全不同。**
+- **这一章中，我们就来学习一下另外一种非常常见的用于存储数据的线性结构:链表。**
+##### 数组
+
+- 要存储多个元素，数组(或称为链表)可能是最常用的数据结构。
+- 我们之前说过，几乎每一种编程语言都有默认实现数组结构。
+
+**但是数组也有很多缺点**
+
+- 数组的创建通常需要申请一段连续的内存空间(一整块的内存)，并且大小是固定的(大多数编程语言数组都是固定的)，所以当当前数组不能满足容量需求时，需要扩容。(一般情况下是申请一个更大的数组，比如2倍。然后将原数组中的元素复制过去
+- 而且在数组开头或中间位置插入数据的成本很高，需要进行大量元素的位移。
+- 尽管JavaScript的Array底层可以帮我们做这些事，但背后的原理依然是这样。
+##### 链表的优势
+**要存储多个元素，另外一个选择就是链表**
+**但不同于数组，链表中的元素在内存中不必是连续的空间。**
+
+- 链表的每个元素有一个存储元素本身的节点和一个指向下一个元素的引用（有些语言称为指针或者链接）组成。
+
+**相对于数组，链表的优势：**
+
+- 内存空间不是必须连续的。
+
+√可以充分利用计算机的内存，实现灵活的内存动态管理。
+
+- 链表不必再创建时就确定大小，并且大小可以无限的延伸下去。
+- 链表在插入和删除数据时，时间复杂度可以达到O(1)
+
+√相对数组效率高很多
+**相对数组，链表的缺点:**
+
+- 链表访问任何一个位置的元素时，都要从头开始访问。（无法跳过第一个元素访问任何一个元素）。
+- 无法通过下标直接访问元素，需要从头一个个访问，直到找到对应元素。
+
+##### 什么是链表?
+
+- 其实上面我们已经简单的提过了链表的结构，我们这里更加详细的分析一下。
+- 链表类似于火车:有一个火车头，火车头会连接一个节点，节点上有乘客(类似于数据)，并且这个节点会连接下一个节点，以此类推。
+##### ![image.png](https://cdn.nlark.com/yuque/0/2023/png/35159616/1683994911369-70392bfe-8787-450f-84bc-d3b02569d1c9.png#averageHue=%23c4c4c3&clientId=u12622967-20b0-4&from=paste&height=379&id=u6b26c3f5&originHeight=379&originWidth=645&originalType=binary&ratio=1&rotation=0&showTitle=false&size=68437&status=done&style=none&taskId=uf9654edc-bc33-4b5b-a76c-6a7160c1c16&title=&width=645)
+![image.png](https://cdn.nlark.com/yuque/0/2023/png/35159616/1686145230046-110f5bf7-e378-4f32-a274-515a7248a009.png#averageHue=%23d3ca9f&clientId=u37b2e3b2-6c56-4&from=paste&height=328&id=ua721b8f8&originHeight=328&originWidth=565&originalType=binary&ratio=1&rotation=0&showTitle=false&size=136104&status=done&style=none&taskId=u1902bff5-c4e7-4c1a-ac48-638958510c0&title=&width=565)
+#### 封装链表相关方法
+我们先来认识一下，链表中应该有哪些常见的操作
+append(element):向链表尾部添加一个新的项
+insert(position，element):向链表的特定位置插入一个新的项。
+![image.png](https://cdn.nlark.com/yuque/0/2023/png/35159616/1684161255621-17b5814f-88f1-4c5e-86eb-207cc8889476.png#averageHue=%23e7e2da&clientId=u4a10ceab-54d4-4&from=paste&height=411&id=u3ed0f02b&originHeight=411&originWidth=788&originalType=binary&ratio=1&rotation=0&showTitle=false&size=109332&status=done&style=none&taskId=uc179178b-d20e-4fc6-877d-f2317f3d443&title=&width=788)
+get(position):获取对应位置的元素
+![image.png](https://cdn.nlark.com/yuque/0/2023/png/35159616/1686145593918-dccb256c-547c-4823-a3f8-6772bbc25222.png#averageHue=%23e3c391&clientId=u37b2e3b2-6c56-4&from=paste&height=515&id=uda3ec4de&originHeight=515&originWidth=889&originalType=binary&ratio=1&rotation=0&showTitle=false&size=141257&status=done&style=none&taskId=ue6115aaa-1314-4028-aa6e-e66a1802f1d&title=&width=889)
+indexOf(element):返回元素在链表中的索引。如果链表中没有该元素则返回-1。
+update(position，element):修改某个位置的元素
+removeAt(position):从链表的特定位置移除一项。
+![image.png](https://cdn.nlark.com/yuque/0/2023/png/35159616/1686145550944-e186fb9d-0737-4d2b-a050-308234298966.png#averageHue=%23e1dfde&clientId=u37b2e3b2-6c56-4&from=paste&height=518&id=u0f0a7501&originHeight=518&originWidth=927&originalType=binary&ratio=1&rotation=0&showTitle=false&size=234849&status=done&style=none&taskId=u179abfa8-25fe-4f73-af02-22dcdced774&title=&width=927)
+remove(element):从链表中移除一项。
+isEmpty():如果链表中不包含任何元素，返回true，如果链表长度大于0则返回false。
+size():返回链表包含的元素个数。与数组的length属性类似。
+#### 源码
+```typescript
+// 1.创建Node节点类
+class Node<T> {
+  value: T;
+  next: Node<T> | null = null;
+  constructor(value: T) {
+    this.value = value;
+  }
+}
+
+// 2.创建LinkedList的类
+class LinkedList<T> {
+  private head: Node<T> | null = null;
+  private size: number = 0;
+
+  get length() {
+    return this.size;
+  }
+  // 封装私有方法
+  // 根绝positon获取当前的节点（不是节点的value，而是获取节点)
+  private getNode(position: number): Node<T> | null {
+    let index = 0;
+    let current = this.head;
+    while (index++ < position && current) {
+      current = current.next;
+    }
+    return current;
+  }
+
+  // 追加节点
+  append(value: T) {
+    // 1.根据value新建一个Node节点
+    const newNode = new Node(value);
+    // 2.
+    if (!this.head) {
+      this.head = newNode;
+    } else {
+      let current = this.head;
+      while (current.next) {
+        current = current.next;
+      }
+      // current肯定指向最后一个节点
+      current.next = newNode;
+    }
+    // 3.size++
+    this.size++;
+  }
+
+  // 遍历链表的方法
+  traverse() {
+    const values: T[] = [];
+    let current = this.head;
+    while (current) {
+      values.push(current.value);
+      current = current.next;
+    }
+    console.log(values.join(" -> "));
+  }
+
+  //链表插入元素的方法
+  insert(value: T, position: number): boolean {
+    // 1.越界判断
+    if (position < 0 || position > this.size) return false;
+    // 2.根据value创建新的节点
+    const newNode = new Node(value);
+    /* 3.判断
+     * 是否插入头部
+     * 否则就找到需要插入的位置，然后记录前一个节点和当前节点，在前一个节点的next等于newNode，newNode的next等于后一个节点
+     */
+    if (position === 0) {
+      newNode.next = this.head;
+      this.head = newNode;
+    } else {
+      const previous = this.getNode(position - 1);
+
+      newNode.next = previous!.next;
+      previous!.next = newNode;
+    }
+    this.size++;
+
+    return true;
+  }
+
+  //链表插入元素的方法
+  removeAt(position: number): T | null {
+    // 1.越界判断
+    if (position < 0 || position >= this.size) return null;
+
+    let current = this.head;
+    if (position === 0) {
+      this.head = current?.next ?? null;
+    } else {
+      const previous = this.getNode(position - 1);
+      previous!.next = previous?.next?.next ?? null;
+    }
+    this.size--;
+
+    return current?.value ?? null;
+  }
+
+  // 获取方法
+  get(position: number): T | null {
+    if (position < 0 || position >= this.size) return null;
+
+    return this.getNode(position)?.value ?? null;
+  }
+  // 更新方法
+  update(value: T, position: number): boolean {
+    if (position < 0 || position >= this.size) return false;
+    const currentNode = this.getNode(position);
+    currentNode!.value = value;
+    return true;
+  }
+  // 根据值获取该值位置索引
+  indexOf(value: T): number {
+    let current = this.head;
+    let index = 0;
+    while (current) {
+      if (current.value === value) {
+        return index;
+      }
+      index++;
+      current = current.next;
+    }
+    return -1;
+  }
+
+  // 删除方法，根据value删除
+  remove(value: T): T | null {
+    const index = this.indexOf(value);
+    return this.removeAt(index);
+  }
+
+  // 判断单链表是否为空的方法
+  isEmpty() {
+    return this.size === 0;
+  }
+}
+
+export {};
+
+```
+
+#### 链表常见面试题
+##### 237-删除链表中的节点 
+
+- [https://leetcode.cn/problems/delete-node-in-a-linked-list/](https://leetcode.cn/problems/delete-node-in-a-linked-list/)
+
+![image.png](https://cdn.nlark.com/yuque/0/2023/png/35159616/1686146035129-a594b8dd-20c3-4bfe-8d8c-37ff02901ec3.png#averageHue=%23dedddb&clientId=u37b2e3b2-6c56-4&from=paste&height=780&id=u8cf64a8f&originHeight=780&originWidth=1476&originalType=binary&ratio=1&rotation=0&showTitle=false&size=433717&status=done&style=none&taskId=udf78dcd8-610b-4c25-bfc9-fd1b4541305&title=&width=1476)
+**解题**
+```typescript
+// Definition for singly-linked list.
+class ListNode {
+  val: number;
+  next: ListNode | null;
+  constructor(val?: number, next?: ListNode | null) {
+    this.val = val === undefined ? 0 : val;
+    this.next = next === undefined ? null : next;
+  }
+}
+
+/**
+ Do not return anything, modify it in-place instead.
+ */
+function deleteNode(node: ListNode | null): void {
+  node!.val = node!.next!.val
+  node!.next = node!.next!.next
+}
+
+```
+
+##### 206 - 反转链表
+
+- [https://leetcode.cn/problems/reverse-linked-list/](https://leetcode.cn/problems/reverse-linked-list/)
+
+![image.png](https://cdn.nlark.com/yuque/0/2023/png/35159616/1686149086601-7b01c2b7-1e45-4a70-b8cc-2559a203c75b.png#averageHue=%23e2e0de&clientId=u37b2e3b2-6c56-4&from=paste&height=675&id=u2b13f2cc&originHeight=675&originWidth=1198&originalType=binary&ratio=1&rotation=0&showTitle=false&size=323997&status=done&style=none&taskId=ub5395f29-5751-40c8-a815-68ebe7f9070&title=&width=1198)
+
+#### 算法的复杂度分析
+
+#### 数组和链表的对比
+
+
+
+
+
+
+
+
+
+
+
+
+
+![](https://cdn.nlark.com/yuque/0/2023/jpeg/35159616/1683209748659-abc9ef98-ade9-4778-990a-98a58e15155c.jpeg)
