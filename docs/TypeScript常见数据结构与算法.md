@@ -443,6 +443,63 @@ function deleteNode(node: ListNode | null): void {
 
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/35159616/1686149086601-7b01c2b7-1e45-4a70-b8cc-2559a203c75b.png#averageHue=%23e2e0de&clientId=u37b2e3b2-6c56-4&from=paste&height=675&id=u2b13f2cc&originHeight=675&originWidth=1198&originalType=binary&ratio=1&rotation=0&showTitle=false&size=323997&status=done&style=none&taskId=ub5395f29-5751-40c8-a815-68ebe7f9070&title=&width=1198)
 
+- 用栈结构解决
+```typescript
+function reverseList(head: ListNode | null): ListNode | null {
+  if(head === null) return null
+  if(head.next === null) return head
+
+
+  const stack:ListNode[] = []
+  let current:ListNode | null = head
+  while(current) {
+    stack.push(current)
+    current = current.next
+  }
+
+
+  const newHead:ListNode = stack.pop()!
+  let newHeadCurrent = newHead
+  while(stack.length) {
+    const node = stack.pop()!
+    newHeadCurrent.next = node
+    newHeadCurrent = newHeadCurrent.next
+  }
+
+
+  newHeadCurrent.next = null
+
+
+  return newHead
+};
+```
+
+- 用非递归解题
+```typescript
+function reverseList(head: ListNode | null): ListNode | null {
+  if (head === null || head.next === null) return head;
+
+  let newHead: ListNode | null = null;
+  // 1.next = 2, 2.next = 3, 3.next = 4
+  while (head) {
+    // 让current指向下一个节点
+    // 目的：保留下个节点的引用，可以拿到，并且不会销毁（current = 2)
+    const current= head.next;
+    // 改变head当前指向的节点，指向newHead
+    // 这里反转链表对于第一节点来说，指向newHead就是null（1.next = null)
+    head.next = newHead;
+    // 让newhead指向head节点
+    // 这里开始准备反转新的节点，目的是下一次遍历时，可以让下一个节点指向第一个节点（newHead = 1)
+    newHead = head;
+    // 让head指向下个节点也就是current(head = 2)
+    head = current;
+  }
+
+  return newHead;
+}
+```
+![image.png](https://cdn.nlark.com/yuque/0/2023/png/35159616/1686411187782-b1e12dad-bd85-40d0-9b96-210e156966fb.png#averageHue=%23d9d7d5&clientId=u15a44394-0de7-4&from=paste&height=252&id=u03aab694&originHeight=252&originWidth=753&originalType=binary&ratio=1&rotation=0&showTitle=false&size=147424&status=done&style=none&taskId=ufbbb4cb5-7cc8-4a51-826c-441d8612699&title=&width=753)
+
 #### 算法的复杂度分析
 
 #### 数组和链表的对比
