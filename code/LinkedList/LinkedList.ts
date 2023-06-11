@@ -1,3 +1,5 @@
+import BasisLinkedList from "./BasisLinkedList";
+
 // 1.创建Node节点类
 class Node<T> {
   value: T;
@@ -8,12 +10,16 @@ class Node<T> {
 }
 
 // 2.创建LinkedList的类
-class LinkedList<T> {
+class LinkedList<T> implements BasisLinkedList<T> {
   private head: Node<T> | null = null;
-  private size: number = 0;
+  private length: number = 0;
 
-  get length() {
-    return this.size;
+  get size() {
+    return this.length;
+  }
+
+  peek():T | undefined {
+    return this.head?.value
   }
   // 封装私有方法
   // 根绝positon获取当前的节点（不是节点的value，而是获取节点)
@@ -42,7 +48,7 @@ class LinkedList<T> {
       current.next = newNode;
     }
     // 3.size++
-    this.size++;
+    this.length++;
   }
 
   // 遍历链表的方法
@@ -59,7 +65,7 @@ class LinkedList<T> {
   //链表插入元素的方法
   insert(value: T, position: number): boolean {
     // 1.越界判断
-    if (position < 0 || position > this.size) return false;
+    if (position < 0 || position > this.length) return false;
     // 2.根据value创建新的节点
     const newNode = new Node(value);
     /* 3.判断
@@ -75,7 +81,7 @@ class LinkedList<T> {
       newNode.next = previous!.next;
       previous!.next = newNode;
     }
-    this.size++;
+    this.length++;
 
     return true;
   }
@@ -83,7 +89,7 @@ class LinkedList<T> {
   //链表插入元素的方法
   removeAt(position: number): T | null {
     // 1.越界判断
-    if (position < 0 || position >= this.size) return null;
+    if (position < 0 || position >= this.length) return null;
 
     let current = this.head;
     if (position === 0) {
@@ -92,20 +98,20 @@ class LinkedList<T> {
       const previous = this.getNode(position - 1);
       previous!.next = previous?.next?.next ?? null;
     }
-    this.size--;
+    this.length--;
 
     return current?.value ?? null;
   }
 
   // 获取方法
   get(position: number): T | null {
-    if (position < 0 || position >= this.size) return null;
+    if (position < 0 || position >= this.length) return null;
 
     return this.getNode(position)?.value ?? null;
   }
   // 更新方法
   update(value: T, position: number): boolean {
-    if (position < 0 || position >= this.size) return false;
+    if (position < 0 || position >= this.length) return false;
     const currentNode = this.getNode(position);
     currentNode!.value = value;
     return true;
@@ -132,7 +138,7 @@ class LinkedList<T> {
 
   // 判断单链表是否为空的方法
   isEmpty() {
-    return this.size === 0;
+    return this.length === 0;
   }
 }
 

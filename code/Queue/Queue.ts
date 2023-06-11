@@ -1,6 +1,6 @@
-import IQueue from "./BasisIQueue";
+import BasisQueue from "./BasisQueue";
 
-class ArrayQueue<T> implements IQueue<T> {
+class ArrayQueue<T> implements BasisQueue<T> {
   // 内部通过数组保存
   private data: T[] = [];
   enqueue(element: T): void {

@@ -1,6 +1,6 @@
-import IStack from "./IStack";
+import BasisStack from "./BasisStack";
 
-class LinkedStack<T = any> implements IStack<T> {
+class LinkedStack<T = any> implements BasisStack<T> {
   // 创建一个链表结构
   
   push(element: T): void {

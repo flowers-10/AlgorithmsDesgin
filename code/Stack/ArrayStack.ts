@@ -1,7 +1,7 @@
-import IStack from "./IStack";
+import BasisStack from "./BasisStack";
 
 // 封装Stack
-class ArrayStack<T = any> implements IStack<T> {
+class ArrayStack<T = any> implements BasisStack<T> {
   // 定义一个数组，用于存储元素
   private data: T[] = [];
 
