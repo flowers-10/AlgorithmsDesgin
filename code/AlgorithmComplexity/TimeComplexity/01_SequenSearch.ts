@@ -13,4 +13,4 @@ function sequenSearch(array:number[],target:number) {
   return result
 }
 
-console.log(sequenSearch([1,2,3,4,5,6,7,8,9,10],1));
+export default sequenSearch
