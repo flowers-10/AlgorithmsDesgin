@@ -2,6 +2,104 @@
 学习路线
 ![](https://cdn.nlark.com/yuque/0/2023/jpeg/35159616/1683209544355-94570b6c-9427-4e42-b470-463a43e5c3eb.jpeg)
 
+# 算法的复杂度分析
+## 什么是算法复杂度？
+不同的算法，其实效率是不一样的
+让我举一个案例来比较两种不同的算法在查找数组中给定元素的时间复杂度
+`[1,2,3,4,5,6,7,...9999,n]`
+#### 顺序查找
+这种方法从头到尾遍历整个数组，依次比较每个元素和给定元素的值。
+如果找到想等元素，则返回下标，如果遍历整个数组都找不到就返回-1。
+```typescript
+function sequenSearch(array:number[],target:number) {
+  let result = -1
+  for (let i = 0;i<array.length;i++) {
+    array[i] === target ? result = i : undefined
+  }
+  return result
+}
+```
+
+最长时间复杂度：n
+平均的时间复杂度: n / 2
+![image.png](https://cdn.nlark.com/yuque/0/2023/png/35159616/1687609588575-a782273c-c17b-4d28-8fed-6e2289663e23.png#averageHue=%2335312c&clientId=u81b2af16-6636-4&from=paste&height=48&id=pZxfq&originHeight=48&originWidth=546&originalType=binary&ratio=1&rotation=0&showTitle=false&size=6704&status=done&style=none&taskId=u930c7536-6d8c-4cbe-898e-64f1589bc7b&title=&width=546)
+该算法时间复杂度是O(n)
+#### 二分查找
+这种算法假设数组是有序的，每次选择数组中间的元素与给定元素进行比较。
+如果找到想等元素，则返回下，如果给定的元素比中间元素小，则在数组左半部分继续查找；如果给定的元素比中间元素大，则在数组右半部分继续查找。
+这样每次查找都会将查找的范围减半，知道找到想等的元素或者查找范围为空。
+```typescript
+function binarySearch(array: number[], target: number) {
+  let left = 0;
+  let right = array.length - 1;
+
+  while (left <= right) {
+    let mid = Math.floor((left + right) / 2);
+    const midTarget = array[mid];
+    if (midTarget === target) {
+      return mid;
+    } else if (midTarget < target) {
+      left = mid + 1;
+    } else {
+      right = mid - 1;
+    }
+  }
+  return -1;
+}
+```
+
+最长时间复杂度：log(n,2)
+平均的时间复杂度: log(n,2) / 2
+![image.png](https://cdn.nlark.com/yuque/0/2023/png/35159616/1687609578504-0f56dc3b-1c9d-430c-a54c-9aa0658711dc.png#averageHue=%2335312c&clientId=u81b2af16-6636-4&from=paste&height=48&id=c8cgo&originHeight=48&originWidth=546&originalType=binary&ratio=1&rotation=0&showTitle=false&size=6704&status=done&style=none&taskId=ud2a7f71a-5667-4a1a-afc5-c4d45016fcc&title=&width=546)
+该算法时间复杂度是O(log n)
+## 大O表示法（Big O notation）
+**大O表示法(Big O notation)英文翻译为大O符号（维基百科翻译)，中文通常翻译为大O表示法（标记法)。**
+ - 这个记号则是在德国数论学家爱德蒙·兰道的著作中才推广的，因此它有时又称为兰道符号(Landau symbols)。
+ - 代表“order of ..”.……阶)的大O，最初是一个大写希腊字母“O”(omicron)，现今用的是大写拉丁字母“O”。
+
+## 时间复杂度
+
+### 分析算法时间效率举例
+ - 举个例子，解决一个规模为n的问题所花费的时间（或者所需步骤的数目)可以表示为: `T(n)=4n2-2n＋2`
+ - 当`n`增大时，`n2`项开始占据主导地位，其他各项可以被忽略;
+
+- 举例说明:当`n=500`
+
+ - `4n2`项是`2n`项的`1000`倍大，因此在大多数场合下，省略后者对表达式的值的影响将是可以忽略不计的。
+进一步看，如果我们与任一其他级的表达式比较， n2的系数也是无关紧要的。
+这样，针对第一个例子`T(n) = 4n2- 2n＋2`，大O符号就记下剩余的部分，写作:
+`T(n) ∈ o(n2)`
+或
+`T(n)= o(n2)`
+**我们就说该例子算法具有**`**n2**`**阶（平方阶）的时间复杂度，表示为**`**O(n2)**`
+### 常用函数阶
+#### 介绍
+![image.png](https://cdn.nlark.com/yuque/0/2023/png/35159616/1687702310774-91546bba-ce89-4ed3-8b50-9159717acf7e.png#averageHue=%23e0e3e2&clientId=u5cd31702-7f6b-4&from=paste&height=274&id=mocNF&originHeight=274&originWidth=453&originalType=binary&ratio=1&rotation=0&showTitle=false&size=70402&status=done&style=none&taskId=ufe7e0362-7a26-47a5-b6c7-a40415e0360&title=&width=453)
+#### 案例
+![image.png](https://cdn.nlark.com/yuque/0/2023/png/35159616/1687702391634-fdc2b87c-7341-485a-a165-47355210845c.png#averageHue=%23e37719&clientId=u5cd31702-7f6b-4&from=paste&height=260&id=ZyJHQ&originHeight=260&originWidth=356&originalType=binary&ratio=1&rotation=0&showTitle=false&size=76092&status=done&style=none&taskId=ud3fed52e-cd74-41ab-b62a-58cd69cb63b&title=&width=356)
+
+#### 图表
+![image.png](https://cdn.nlark.com/yuque/0/2023/png/35159616/1687702401628-dae5a2ae-aa0b-4755-a05f-fa5db260ea8b.png#averageHue=%23ebb986&clientId=u5cd31702-7f6b-4&from=paste&height=467&id=tbMEw&originHeight=467&originWidth=680&originalType=binary&ratio=1&rotation=0&showTitle=false&size=141033&status=done&style=none&taskId=ua295b68a-9d9f-4489-ac39-93c32600df4&title=&width=680)
+
+## 空间复杂度
+**空间复杂度指的是程序运行过程中所需要的额外存储空间。**
+
+空间复杂度也可以用大O表示法来表示;
+空间复杂度的计算方法与时间复杂度类似，通常需要分析程序中需要额外分配的内存空间，如数组、变量、对象、递归调用等。
+
+### 分析算法空间效率举例
+举个栗子:
+对于一个简单的递归算法来说，每次调用都会在内存中分配新的栈帧，这些栈帧占用了额外的空间。
+- 因此，该算法的空间复杂度是o(n)，其中n是递归深度。
+而对于迭代算法来说，在每次迭代中不需要分配额外的空间，因此其空间复杂度为o(1)。
+**当空间复杂度很大时，可能会导致内存不足，程序崩溃。**
+**在平时进行算法优化时，我们通常会进行如下的考虑:**
+
+- 使用尽量少的空间(优化空间复杂度);
+- 使用尽量少的时间（优化时间复杂度);
+- 特定情况下:使用空间换时间或使用时间换空间;
+
+
 # 数据结构
 ## 线性结构
 
@@ -500,11 +598,42 @@ function reverseList(head: ListNode | null): ListNode | null {
 ```
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/35159616/1686411187782-b1e12dad-bd85-40d0-9b96-210e156966fb.png#averageHue=%23d9d7d5&clientId=u15a44394-0de7-4&from=paste&height=252&id=u03aab694&originHeight=252&originWidth=753&originalType=binary&ratio=1&rotation=0&showTitle=false&size=147424&status=done&style=none&taskId=ufbbb4cb5-7cc8-4a51-826c-441d8612699&title=&width=753)
 
-#### 算法的复杂度分析
+- 用递归方案解题
+```typescript
+function reverseList(head: ListNode | null): ListNode | null {
+  // 递归停止条件，当递归到最后一个节点时停止
+  if (head === null || head.next === null) return head;
+  // 一直递归循环直到符合head === null 时停止递归
+  // 那么拿到的就是链表倒数第二个节点
+  const newHead = reverseList(head.next ?? null)
+  // 反转链表，让最后一个节点指向head开始正式反转
+  head.next.next = head
+  // 让倒数第二个节点的next指向null
+  head.next = null
+  // 最后递归完了就是反转后的链表了
+  return newHead
+}
+```
 
-#### 数组和链表的对比
+### 数组和链表的复杂度对比
+接下来，我们使用大O表示法来对比一下数组和链表的时间复杂度:
 
+![image.png](https://cdn.nlark.com/yuque/0/2023/png/35159616/1687703529752-190e3348-b71a-4a09-ba7b-b87d9517a107.png#averageHue=%23e4e4e4&clientId=u5cd31702-7f6b-4&from=paste&height=185&id=u74db48e6&originHeight=185&originWidth=706&originalType=binary&ratio=1&rotation=0&showTitle=false&size=35676&status=done&style=none&taskId=uf144d107-e68a-406e-bf49-b84999ab27f&title=&width=706)
 
+- **数组是一种连续的存储结构，通过下标可以直接访问数组中的任意元素。**
+
+ - 时间复杂度:对于数组，随机访问时间复杂度为o(1)，插入和删除操作时间复杂度为o(n)。
+ - 空间复杂度:数组需要连续的存储空间，空间复杂度为o(n)。
+
+- **链表是一种链式存储结构，通过指针链接起来的节点组成，访问链表中元素需要从头结点开始遍历。**
+
+ - 时间复杂度:对于链表，随机访问时间复杂度为o(n)，插入和删除操作时间复杂度为o(1)。
+ - 空间复杂度:链表需要为每个节点分配存储空间，空间复杂度为O(n)。
+
+- **在实际开发中，选择使用数组还是链表需要根据具体应用场景来决定。**
+
+ - 如果数据量不大，且需要频繁随机访问元素，使用数组可能会更好。
+ - 如果数据量大，或者需要频繁插入和删除元素，使用链表可能会更好。
 
 
 
@@ -517,3 +646,5 @@ function reverseList(head: ListNode | null): ListNode | null {
 
 
 ![](https://cdn.nlark.com/yuque/0/2023/jpeg/35159616/1683209748659-abc9ef98-ade9-4778-990a-98a58e15155c.jpeg)
+## 哈希化
+
