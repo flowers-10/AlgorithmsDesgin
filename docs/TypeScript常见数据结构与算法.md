@@ -101,7 +101,7 @@ function binarySearch(array: number[], target: number) {
 
 
 # 数据结构
-## 线性结构
+# 线性结构
 
 - **线性结构（Linear List）是由n（n>=0）个数据元素（结点）a[0]，a[1]，a[2]...，a[n-1]组成的有序序列。**
 - **其中：**
@@ -114,7 +114,7 @@ function binarySearch(array: number[], target: number) {
 
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/35159616/1683210272281-d4f08fb1-7ebb-46d0-9a05-178d576bce74.png#averageHue=%23c7cbce&clientId=uc5c9ecb2-3046-4&from=paste&height=143&id=u92ef2daf&originHeight=143&originWidth=783&originalType=binary&ratio=1&rotation=0&showTitle=false&size=44368&status=done&style=none&taskId=ue75723aa-ce52-4dd8-aa8c-985f73e8c3d&title=&width=783)
 
-### 数组(Array)结构
+## 数组(Array)结构
 **数组(Array)结构是一种重要的数据结构：**
 
 - 几乎每种编程语言都会提供一种`原生数据结构`（自带的）；
@@ -122,12 +122,12 @@ function binarySearch(array: number[], target: number) {
 
 **通常数组的内存是连续的，所以数组在知道下标值的情况下，访问小绿是非常高的**
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/35159616/1683210540074-08f7d491-ab20-4015-ba1e-7795c2a7c593.png#averageHue=%23e4dbd1&clientId=uc5c9ecb2-3046-4&from=paste&height=254&id=ue693f993&originHeight=254&originWidth=671&originalType=binary&ratio=1&rotation=0&showTitle=false&size=55340&status=done&style=none&taskId=u374e6bb3-488d-4c6a-8135-092315ca9ef&title=&width=671)
-### 栈结构（Stack）
-#### 认识栈结构和特性
+## 栈结构（Stack）
+### 认识栈结构和特性
 数组是一种线性结构，并且可以在数组的任意位置插入和删除数据。
 但是有时候我们为了实现某些功能，必须对这种任意性加以限制。
 而栈和队列就是比较常见的受限的线性结构。
-#### 栈结构示意图
+### 栈结构示意图
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/35159616/1683210911412-be31d890-9ed3-446c-b90b-70012d2428c3.png#averageHue=%23e7e3d9&clientId=uc5c9ecb2-3046-4&from=paste&height=290&id=u822b2fc5&originHeight=290&originWidth=742&originalType=binary&ratio=1&rotation=0&showTitle=false&size=59328&status=done&style=none&taskId=uea75ab66-726d-486b-b56a-c0fbfd8d836&title=&width=742)
 
 栈它是一种受限的线性结构，先进后出（LIFO）
@@ -139,12 +139,12 @@ function binarySearch(array: number[], target: number) {
 #### 面试题目
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/35159616/1683211390186-0466fe3a-3bfb-4854-ba50-2b0a40b35fd6.png#averageHue=%23e7e6e6&clientId=uc5c9ecb2-3046-4&from=paste&height=91&id=u7e6a883a&originHeight=91&originWidth=437&originalType=binary&ratio=1&rotation=0&showTitle=false&size=28121&status=done&style=none&taskId=u52bbb934-f84f-45ae-97d3-005bef5725a&title=&width=437)
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/35159616/1683211398067-f6a4a7d1-c433-4e3d-9fd5-8e0b61dbea92.png#averageHue=%23dfdfdf&clientId=uc5c9ecb2-3046-4&from=paste&height=142&id=u381d3c66&originHeight=142&originWidth=666&originalType=binary&ratio=1&rotation=0&showTitle=false&size=60356&status=done&style=none&taskId=uc3bcb036-fe8b-4b58-93ea-e745fec94aa&title=&width=666)
-#### 栈结构实现
+### 栈结构实现
 **实现栈结构：**
 
 - 基于数组实现
 - 基于链表实现
-#### 创建栈结构的类
+### 创建栈结构的类
 **创建一个栈的类**
 ```typescript
 // 封装Stack
@@ -174,7 +174,7 @@ class ArrayStack {
 - isEmpty():如果栈里没有任何元素就返回true，否则返回false。
 - size():返回栈里的元素个数。这个方法和数组的length属性很类似。
 
-#### 源码
+### 源码
 ```typescript
 import IStack from "./IStack";
 
@@ -214,8 +214,8 @@ class ArrayStack<T = any> implements IStack<T> {
 export default ArrayStack;
 
 ```
-### 队列结构（Queue)
-#### 认识队列以及特性
+## 队列结构（Queue)
+### 认识队列以及特性
 **受限的线性结构：**
 
 - 我们已经学习了一种受限的线性结构：栈结构
@@ -244,7 +244,7 @@ export default ArrayStack;
 
 **创建一个类实现队列**
 
-#### 队列结构常见方法
+### 队列结构常见方法
 **常见操作：**
 
 - enqueue(element):向尾部添加一个（或多个）新的项。
@@ -253,7 +253,7 @@ export default ArrayStack;
 - isEmpty():如果队列中不包含任何元素，返回true，否则返回false。
 - size():返回队列包含的元素个数，与数组的length属性类似。
 
-#### 源码
+### 源码
 ```typescript
 import IQueue from "./IQueue";
 
@@ -306,13 +306,13 @@ export default ArrayQueue;
 - 对剩下的人重复该过程，从下一个人开始，朝同一方向跳过相同数量的人，直到只剩下一个人，并被释放。
 - 在给定数量的情况下，站在第几个位置可以避免被处决?
 
-### 链表结构（LinkedList）
-#### 认识链表以及特性
-##### 链表以及数组的缺点
+## 链表结构（LinkedList）
+### 认识链表以及特性
+### 链表以及数组的缺点
 
 - **链表和数组一样，可以用于存储一系列的元素，但是链表和数组的实现机制完全不同。**
 - **这一章中，我们就来学习一下另外一种非常常见的用于存储数据的线性结构:链表。**
-##### 数组
+#### 数组
 
 - 要存储多个元素，数组(或称为链表)可能是最常用的数据结构。
 - 我们之前说过，几乎每一种编程语言都有默认实现数组结构。
@@ -322,7 +322,7 @@ export default ArrayQueue;
 - 数组的创建通常需要申请一段连续的内存空间(一整块的内存)，并且大小是固定的(大多数编程语言数组都是固定的)，所以当当前数组不能满足容量需求时，需要扩容。(一般情况下是申请一个更大的数组，比如2倍。然后将原数组中的元素复制过去
 - 而且在数组开头或中间位置插入数据的成本很高，需要进行大量元素的位移。
 - 尽管JavaScript的Array底层可以帮我们做这些事，但背后的原理依然是这样。
-##### 链表的优势
+#### 链表的优势
 **要存储多个元素，另外一个选择就是链表**
 **但不同于数组，链表中的元素在内存中不必是连续的空间。**
 
@@ -343,13 +343,13 @@ export default ArrayQueue;
 - 链表访问任何一个位置的元素时，都要从头开始访问。（无法跳过第一个元素访问任何一个元素）。
 - 无法通过下标直接访问元素，需要从头一个个访问，直到找到对应元素。
 
-##### 什么是链表?
+### 什么是链表?
 
 - 其实上面我们已经简单的提过了链表的结构，我们这里更加详细的分析一下。
 - 链表类似于火车:有一个火车头，火车头会连接一个节点，节点上有乘客(类似于数据)，并且这个节点会连接下一个节点，以此类推。
 ##### ![image.png](https://cdn.nlark.com/yuque/0/2023/png/35159616/1683994911369-70392bfe-8787-450f-84bc-d3b02569d1c9.png#averageHue=%23c4c4c3&clientId=u12622967-20b0-4&from=paste&height=379&id=u6b26c3f5&originHeight=379&originWidth=645&originalType=binary&ratio=1&rotation=0&showTitle=false&size=68437&status=done&style=none&taskId=uf9654edc-bc33-4b5b-a76c-6a7160c1c16&title=&width=645)
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/35159616/1686145230046-110f5bf7-e378-4f32-a274-515a7248a009.png#averageHue=%23d3ca9f&clientId=u37b2e3b2-6c56-4&from=paste&height=328&id=ua721b8f8&originHeight=328&originWidth=565&originalType=binary&ratio=1&rotation=0&showTitle=false&size=136104&status=done&style=none&taskId=u1902bff5-c4e7-4c1a-ac48-638958510c0&title=&width=565)
-#### 封装链表相关方法
+### 封装链表相关方法
 我们先来认识一下，链表中应该有哪些常见的操作
 append(element):向链表尾部添加一个新的项
 insert(position，element):向链表的特定位置插入一个新的项。
@@ -363,7 +363,7 @@ removeAt(position):从链表的特定位置移除一项。
 remove(element):从链表中移除一项。
 isEmpty():如果链表中不包含任何元素，返回true，如果链表长度大于0则返回false。
 size():返回链表包含的元素个数。与数组的length属性类似。
-#### 源码
+### 源码
 ```typescript
 // 1.创建Node节点类
 class Node<T> {
@@ -646,8 +646,8 @@ function reverseList(head: ListNode | null): ListNode | null {
 
 
 ![](https://cdn.nlark.com/yuque/0/2023/jpeg/35159616/1683209748659-abc9ef98-ade9-4778-990a-98a58e15155c.jpeg)
-## 哈希表
-### 介绍
+# 哈希表
+## 介绍
 **哈希表是一种非常重要的数据结构，但是很多学习编程的人一直搞不懂哈希表到底是如何实现的。**
 
 - 在这一章节中，我们就一点点来实现一个自己的哈希表。
@@ -776,7 +776,7 @@ function reverseList(head: ListNode | null): ListNode | null {
 
 - **第一种方案(把数字相加求和)产生的数组下标太少。**
 - **口第二种方案(与27的幂相乘求和)产生的数组下标又太多。**
-#### 方案三：开放地址法
+### 方案三：开放地址法
 **开放地址法的主要工作方式是寻找空白的单元格来添加重复的数据。**
 **我们还是通过图片来了解开放地址法的工作方式。**
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/35159616/1687961859057-7955c804-c63c-4c7a-a5ae-9bd4f90f3624.png#averageHue=%238e928c&clientId=u654822fe-263e-4&from=paste&height=451&id=u80188ce4&originHeight=451&originWidth=212&originalType=binary&ratio=1&rotation=0&showTitle=false&size=103237&status=done&style=none&taskId=u3be8c517-d7f5-46ea-ae7a-46caa186746&title=&width=212)![image.png](https://cdn.nlark.com/yuque/0/2023/png/35159616/1687961864706-b2cf1dab-956c-44dc-a537-ea68ce9bd41a.png#averageHue=%233d4046&clientId=u654822fe-263e-4&from=paste&height=205&id=u7b7edc39&originHeight=205&originWidth=598&originalType=binary&ratio=1&rotation=0&showTitle=false&size=232611&status=done&style=none&taskId=uad448525-54e6-455c-82e1-a6fd188b99b&title=&width=598)
